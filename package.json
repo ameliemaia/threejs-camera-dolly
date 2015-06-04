@@ -1,5 +1,5 @@
 {
-  "name": "camera-dolly",
+  "name": "threejs-camera-dolly",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "build": "node_modules/stylus/bin/stylus -w -u nib app.styl -o css/app.css"
   },
   "author": "David Paul Rosser <info@davidpaulrosser.co.uk> (http://ivxvixviii.io/)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "nib": "^1.1.0",
     "stylus": "^0.51.1"
