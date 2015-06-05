@@ -8,6 +8,6 @@ This helper was created to solve this problem by using one path for the camera a
 
 Path positions can be exported to JSON and loaded back in.
 
-Try the interactive [demo](http://demo.com).
+Try the interactive [demo](http://davidpaulrosser.github.io/threejs-camera-dolly/).
 
 This helper was created for [VOID](http://void.hi-res.net), an interactive webgl experience by [Hi-ReS!](http://hi-res.net)
