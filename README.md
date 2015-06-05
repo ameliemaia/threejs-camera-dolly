@@ -1,4 +1,4 @@
-# Camera Dolly
+# Threejs Camera Dolly
 
 ![](screenshot.jpg)
 
