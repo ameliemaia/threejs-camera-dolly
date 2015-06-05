@@ -1,0 +1,214 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url("../fonts/oxygenmono/BzV4DVOwAgGelLT9EC5xyrrIa-7acMAeDBVuclsi6Gc.woff") format('woff');
+}
+body {
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Oxygen Mono';
+  color: #fff;
+  line-height: 16px;
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 20px 0;
+}
+p {
+  margin: 10px 0;
+}
+strong {
+  font-weight: bold;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-bottom: 20px;
+}
+ol li {
+  margin-bottom: 5px;
+}
+#dpr {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  -webkit-transition: opacity 0.5s EASE;
+  -moz-transition: opacity 0.5s EASE;
+  -o-transition: opacity 0.5s EASE;
+  -ms-transition: opacity 0.5s EASE;
+  transition: opacity 0.5s EASE;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  background-image: url("../img/DPR.svg");
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+#dpr:hover {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+#header {
+  background-color: rgba(255,255,255,0.95);
+  color: #000;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  font-size: 12px;
+  padding: 30px;
+  max-width: 350px;
+}
+#header span {
+  display: inline-block;
+  margin-left: 4px;
+  text-decoration: underline;
+}
+.dg {
+  font-family: 'Oxygen Mono' !important;
+}
+.dg.ac {
+  z-index: 1 !important;
+}
+.dg.ac .dg li:not(.folder) {
+  background: rgba(0,0,0,0.85) !important;
+}
+.dg.ac .dg .c .slider-fg,
+.dg.ac .dg .c .slider:hover .slider-fg {
+  background: #fff !important;
+}
+.dg.ac .c .slider {
+  background: rgba(255,255,255,0.2) !important;
+}
+.dg.ac .dg .c input[type=text] {
+  background-color: #464542;
+}
+.dg.ac .hue-field {
+  width: 14px !important;
+}
+.dg.ac li.string input[type=text] {
+  background: #000 !important;
+  color: #fff !important;
+}
+.dg.ac .cr.string {
+  border-left-color: #fff !important;
+}

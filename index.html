@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Threejs Camera Dolly</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+	<header id="header">
+		<h1>Threejs Camera Dolly</h1>
+		<p>When dealing with camera animation in threejs it's difficult to control both camera  and lookat positions with precision.</p>
+
+		<p>This helper was created to solve this problem by using one path for the camera and another for it's lookat.</p>
+
+		<p>Path positions can be exported to JSON and loaded back in.</p>
+
+		<h3>Controls</h3>
+
+		<p>
+			<ol>
+				<li>Drag the cameraPosition slider to move the camera</li>
+		   		<li>Drag the lookatPositon slider to move the lookat point</li>
+		   </ol>
+		</p>
+
+		<p>This helper was created for <a href="http://void.hi-res.net" target="_blank">VOID</a>, an interactive webgl experience by <a href="http://hi-res.net" target="_blank">Hi-ReS!</a></p>
+
+	</header>
+	<a id="dpr" href="http://ivxvixviii.io"></a>
+	<script type="text/javascript" src="vendor/dat.gui.js"></script>
+	<script type="text/javascript" src="vendor/three.min.js"></script>
+	<script type="text/javascript" src="vendor/TrackballControls.js"></script>
+	<script type="text/javascript" src="dolly.js"></script>
+	<script type="text/javascript">
+
+		var WIDTH 	 	= window.innerWidth;
+		var HEIGHT 	 	= window.innerHeight;
+		var canvas 	 	= document.getElementById('canvas');
+		var renderer 	= new THREE.WebGLRenderer();
+		var camera   	= new THREE.PerspectiveCamera( 65, WIDTH / HEIGHT, 0.1, 1000 );
+		var cameraDolly = new THREE.PerspectiveCamera( 65, WIDTH / HEIGHT, 0.1, 1000 );
+		var scene 	 	= new THREE.Scene();
+
+		document.body.appendChild(renderer.domElement);
+
+		onWindowResize();
+
+		// Helpers
+		scene.add( new THREE.GridHelper(50, 10));
+		scene.add( new THREE.AxisHelper(10));
+		scene.add( new THREE.CameraHelper( cameraDolly ) );
+
+		// Controls
+		var controls = new THREE.TrackballControls( camera, renderer.domElement );
+		controls.rotateSpeed          = 1.0;
+		controls.zoomSpeed            = 1.2;
+		controls.panSpeed             = 0.8;
+		controls.noZoom 	          = false;
+		controls.noPan  	          = false;
+		controls.staticMoving 		  = true;
+		controls.dynamicDampingFactor = 0.5;
+
+		// Listeners
+		window.addEventListener('resize', onWindowResize, false);
+
+		// Start
+		camera.position.set(45, 45, 45);
+		camera.lookAt(new THREE.Vector3());
+
+		// Dolly
+		var points = {
+			"camera": [
+				{
+					"x": -35,
+					"y": 10,
+					"z": 30
+				},
+				{
+					"x": -21,
+					"y": 10,
+					"z": 20
+				},
+				{
+					"x": 40,
+					"y": 0,
+					"z": 0
+				}
+			],
+			"lookat": [
+				{
+					"x": -40,
+					"y": 10,
+					"z": -40
+				},
+				{
+					"x": 0,
+					"y": -10,
+					"z": -40
+				},
+				{
+					"x": 40,
+					"y": 10,
+					"z": -40
+				}
+			]
+		};
+
+		// GUI
+		var gui = new dat.GUI;
+		gui.width = 350;
+		gui.open();
+
+		var dolly = new THREE.CameraDolly(cameraDolly, scene, points, gui);
+
+		gui.add(dolly, 'cameraPosition', 0, 1).onChange(function(){
+			dolly.updateCamera();
+		});
+		gui.add(dolly, 'lookatPosition', 0, 1).onChange(function(){
+			dolly.updateCamera();
+		});
+		gui.add(dolly, 'exportPositions');
+
+		function update(){
+
+			requestAnimationFrame(update);
+
+			render( camera,  0, 0, 1, 1 );
+			render( cameraDolly, 0.75, 0, 0.25, 0.25 );
+
+			controls.update();
+		}
+
+		function render( camera, left, bottom, width, height ){
+
+			left   *= WIDTH;
+			bottom *= HEIGHT;
+			width  *= WIDTH;
+			height *= HEIGHT;
+
+			renderer.setViewport( left, bottom, width, height );
+			renderer.setScissor( left, bottom, width, height );
+			renderer.enableScissorTest( true );
+
+			renderer.render( scene, camera );
+		}
+
+		function onWindowResize(){
+
+			WIDTH  = window.innerWidth;
+			HEIGHT = window.innerHeight;
+
+			camera.aspect = WIDTH / HEIGHT;
+
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( WIDTH, HEIGHT );
+		}
+
+		update();
+
+	</script>
+</body>
+</html>
