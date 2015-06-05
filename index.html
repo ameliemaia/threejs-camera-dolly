@@ -63,7 +63,8 @@
 		window.addEventListener('resize', onWindowResize, false);
 
 		// Start
-		camera.position.set(45, 45, 45);
+		var zoom = 80;
+		camera.position.set(1 * zoom, 0.75 * zoom, 1 * zoom);
 		camera.lookAt(new THREE.Vector3());
 
 		// Dolly
@@ -71,11 +72,11 @@
 			"camera": [
 				{
 					"x": -35,
-					"y": 10,
-					"z": 30
+					"y": 0,
+					"z": 0
 				},
 				{
-					"x": -21,
+					"x": 0,
 					"y": 10,
 					"z": 20
 				},
@@ -104,6 +105,11 @@
 			]
 		};
 
+		// Controller
+		var controller = {
+			animate: true
+		};
+
 		// GUI
 		var gui = new dat.GUI;
 		gui.width = 350;
@@ -112,12 +118,16 @@
 		var dolly = new THREE.CameraDolly(cameraDolly, scene, points, gui);
 
 		gui.add(dolly, 'cameraPosition', 0, 1).onChange(function(){
-			dolly.updateCamera();
+			dolly.update();
 		});
 		gui.add(dolly, 'lookatPosition', 0, 1).onChange(function(){
-			dolly.updateCamera();
+			dolly.update();
 		});
 		gui.add(dolly, 'exportPositions');
+		gui.add(controller, 'animate');
+
+		// Clock
+		var clock = new THREE.Clock( true );
 
 		function update(){
 
@@ -125,6 +135,21 @@
 
 			render( camera,  0, 0, 1, 1 );
 			render( cameraDolly, 0.75, 0, 0.25, 0.25 );
+
+
+
+			var delta = clock.getElapsedTime() * 0.5;
+			var position = THREE.Math.mapLinear(Math.sin(delta), -1, 1, 0, 1);
+
+			if(controller.animate){
+				dolly.cameraPosition = position;
+				dolly.lookatPosition = position;
+				dolly.update();
+
+				for (var i in gui.__controllers) {
+					gui.__controllers[i].updateDisplay();
+				}
+			}
 
 			controls.update();
 		}

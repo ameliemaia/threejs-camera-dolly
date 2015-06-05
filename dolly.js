@@ -89,7 +89,7 @@ THREE.CameraDolly = function ( camera, scene, points, gui ){
 	};
 
 	this.createCurves();
-	this.updateCamera();
+	this.update();
 };
 
 THREE.CameraDolly.prototype.createCurves = function(){
@@ -153,7 +153,7 @@ THREE.CameraDolly.prototype.createCurves = function(){
 
 	this.scene.add( this.pathLookatCurve );
 
-	this.updateCamera();
+	this.update();
 };
 
 
@@ -174,7 +174,7 @@ THREE.CameraDolly.prototype.createMarker = function(color){
 	return new THREE.Mesh(geometry, material);
 };
 
-THREE.CameraDolly.prototype.updateCamera = function(){
+THREE.CameraDolly.prototype.update = function(){
 
 	var position = this.cameraSpline.getPointAt( this.cameraPosition );
 
