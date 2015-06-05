@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/stylus/bin/stylus -w -u nib app.styl -o css/app.css"
+    "watch": "node_modules/stylus/bin/stylus -w -u nib app.styl -o css/app.css",
+    "build": "node_modules/stylus/bin/stylus -u nib app.styl -o css/app.css"
   },
   "author": "David Paul Rosser <info@davidpaulrosser.co.uk> (http://ivxvixviii.io/)",
   "license": "MIT",

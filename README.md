@@ -2,7 +2,7 @@
 
 ![](screenshot.jpg)
 
-When dealing with camera animation in [threejs](http://threejs.org) it's difficult to control both camera and lookat movements with precision.
+When dealing with camera animation in [threejs](http://threejs.org) it's difficult to control both camera and lookat positions with precision.
 
 This helper was created to solve this problem by using one path for the camera and another for it's lookat.
 

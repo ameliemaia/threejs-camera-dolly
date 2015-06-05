@@ -108,6 +108,7 @@ body {
   background-position: center;
   font-family: 'Oxygen Mono';
   color: #fff;
+  line-height: 16px;
 }
 h1 {
   text-transform: uppercase;
@@ -127,6 +128,18 @@ strong {
 }
 a {
   color: #000;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-bottom: 20px;
+}
+ol li {
+  margin-bottom: 5px;
 }
 #dpr {
   width: 60px;
@@ -163,7 +176,7 @@ a {
   z-index: 1;
   font-size: 12px;
   padding: 30px;
-  max-width: 400px;
+  max-width: 350px;
 }
 #header span {
   display: inline-block;
