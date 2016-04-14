@@ -2,7 +2,7 @@
   "name": "threejs-camera-dolly",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dolly.js",
   "scripts": {
     "watch": "node_modules/stylus/bin/stylus -w -u nib app.styl -o css/app.css",
     "build": "node_modules/stylus/bin/stylus -u nib app.styl -o css/app.css"
